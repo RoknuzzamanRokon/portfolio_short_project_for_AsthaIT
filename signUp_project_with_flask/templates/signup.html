@@ -11,7 +11,7 @@
     <div class="container">
         <h2>Sign Up</h2>
         <form id="signup-form">
-            <div class='form-group'>
+            <div class='form-group full-width'>
                 <input type="text" id="first-name" placeholder="First Name">
                 <input type='text' id="surname" placeholder="surname">
             </div>
@@ -54,15 +54,20 @@
 
             <div class="form-group">
                 <label for="gender">Please choose a gender.</label>
-                <div class="gender-group">
-                    <input type="radio" id="gender-female" name="gender" value="female">
-                    <label for="gender-female">Female</label>
-                    <input type="radio" id="gender-male" name="gender" value="custom">
-                    <label for="gender-male">Male</label>
-                    <input type="radio" id="gender-custom" name="gender" value="custom">
-                    <label for="gender-custom">Custom</label>
+                <div class="form-group gender-group">
+                    <label for="female">
+                        Female
+                        <input type="radio" id="female" name="gender" value="female">
+                    </label>
+                    <label for="male">
+                        Male
+                        <input type="radio" id="male" name="gender" value="male">
+                    </label>
+                    <label for="custom">
+                        Custom
+                        <input type="radio" id="custom" name="gender" value="custom">
+                    </label>
                 </div>
-                <span class="error" id="gender-error"></span>
             </div>
             <p class="agreement">By clicking Sign Up, you agree to our User Agreement, privacy policy, and cookie policy. </p>
             <div class="form-actions">
