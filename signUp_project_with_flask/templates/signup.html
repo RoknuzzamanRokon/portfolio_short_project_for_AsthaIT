@@ -26,7 +26,7 @@
             name="contact"
             placeholder="Enter Mobile or email"
           />
-          <div class="error" id="contact-error">Enter email address or mobile number.</div>
+          <div class="contact-error" id="contact-error">Enter email address or mobile number.</div>
         </div>
 
         <div class="form-group">
@@ -41,32 +41,41 @@
         <div class="form-group">
           <label for="dob">Date of Birth</label>
           <div class="dob-group">
-            <select name="dob-day" id="dob-day">
-              <option value="">Day</option>
-              {% for day in range(1, 32) %}
-              <option value="{{ day }}">{{ day }}</option>
-              {% endfor %}
-            </select>
+            <div class="dob-item">
+                <select name="dob-day" id="dob-day">
+                    <option value="">Day</option>
+                    {% for day in range(1, 32) %}
+                    <option value="{{ day }}">{{ day }}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-            <select name="dob-month" id="dob-month">
-              <option value="">Month</option>
-              {% for month in ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
-              "Aug", "Sep", "Oct", "Nov", "Dec"] %}
-              <option value="{{ loop.index }}">{{ month }}</option>
-              {% endfor %}
-            </select>
+            <div class="dob-item">
+                <select name="dob-month" id="dob-month">
+                    <option value="">Month</option>
+                    {% for month in ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+                    "Aug", "Sep", "Oct", "Nov", "Dec"] %}
+                    <option value="{{ loop.index }}">{{ month }}</option>
+                    {% endfor %}
+                </select>               
+            </div>
+            <div class="dob-item">
+                <select name="dob-year" id="dob-year">
+                    <option value="">Year</option>
+                    {% for year in range(1900, 2024) %}
+                    <option value="{{ year }}">{{ year }}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-            <select name="dob-year" id="dob-year">
-              <option value="">Year</option>
-              {% for year in range(1900, 2024) %}
-              <option value="{{ year }}">{{ year }}</option>
-              {% endfor %}
-            </select>
+
           </div>
           <div class="error" id="dob-error">
             Invalid Date. Please select a valid date.
           </div>
         </div>
+
+
 
         <div class="form-group">
           <label for="gender">Please choose a gender.</label>
