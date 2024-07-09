@@ -30,7 +30,7 @@
                     <select name="dob-day" id="dob-day">
                         <option value="">Day</option>
                         {% for day in range(1, 32) %}
-                            <option value="{{day}}"{{ day }}></option>
+                            <option value="{{ day }}">{{ day }}</option>
                         {% endfor %}
                     </select>
 
@@ -48,7 +48,7 @@
                         {% endfor %}
                     </select>
                 </div>
-                <span class="error" id="dov-error">Invalid Date, please select a valid date.</span>
+                <span class="error" id="dob-error">Invalid Date, please select a valid date.</span>
             </div>
 
             <div class="form-group">
