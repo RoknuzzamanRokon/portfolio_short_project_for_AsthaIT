@@ -110,7 +110,7 @@ h2 {
 
 .contact-error {
     display: none;
-    color: red;
+    color: rgb(243, 117, 117);
     font-size: 0.875em;
     margin-top: 10px;
     margin-bottom: 10px;
