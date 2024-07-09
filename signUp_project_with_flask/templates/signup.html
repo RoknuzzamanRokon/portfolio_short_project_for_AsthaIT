@@ -78,5 +78,15 @@
         <div id="response-message"></div>
     </div>
 
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            document.querySelectorAll('.error').forEach(function(element) {
+                element.textContent = '';
+            });
+        })
+    </script>
+
 </body>
 </html>
