@@ -46,10 +46,24 @@
                         {% for year in range(1900, 2024) %}
                             <option value="{{ year }}">{{ year }}</option>
                         {% endfor %}
-
                     </select>
                 </div>
-            </div> 
+                <span class="error" id="dov-error">Invalid Date, please select a valid date.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Please choose a gender.</label>
+                <div class="gender-group">
+                    <input type="radio" id="gender-female" name="gender" value="female">
+                    <label for="gender-female">Female</label>
+                    <input type="radio" id="gender-male" name="gender" value="custom">
+                    <label for="gender-male">Male</label>
+                    <input type="radio" id="gender-custom" name="gender" value="custom">
+                    <label for="gender-custom">Custom</label>
+                </div>
+                <span class="error" id="gender-error"></span>
+            </div>
+
 
         </form>
     </div>
