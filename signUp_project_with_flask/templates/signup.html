@@ -1,92 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
-</head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css')}}"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <h2>Sign Up</h2>
-        <form id="signup-form">
-            <div class='form-group full-width'>
-                <input type="text" id="first-name" placeholder="First Name">
-                <input type='text' id="surname" placeholder="surname">
-            </div>
-            
-            <div class="form-group">
-                <input type="text" id="contact" name="contact" placeholder="Enter Mobile or email">
-            </div>
+      <h2>Sign Up</h2>
+      <form id="signup-form">
+        <div class="form-group full-width">
+          <input type="text" id="first-name" placeholder="First Name" />
+          <input type="text" id="surname" placeholder="surname" />
+        </div>
 
-            <div class="form-group">
-                <input type="password" id="password" name="password" placeholder="Password must be at least 4 chars long.">
+        <div class="form-group">
+          <input
+            type="text"
+            id="contact"
+            name="contact"
+            placeholder="Enter Mobile or email"
+          />
+        </div>
 
-            </div>
+        <div class="form-group">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password must be at least 4 chars long."
+          />
+        </div>
 
-            <div class="form-group">
-                <label for="dob">Date of Birth</label>
-                <div class="dob-group">
-                    <select name="dob-day" id="dob-day">
-                        <option value="">Day</option>
-                        {% for day in range(1, 32) %}
-                            <option value="{{ day }}">{{ day }}</option>
-                        {% endfor %}
-                    </select>
+        <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <div class="dob-group">
+            <select name="dob-day" id="dob-day">
+              <option value="">Day</option>
+              {% for day in range(1, 32) %}
+              <option value="{{ day }}">{{ day }}</option>
+              {% endfor %}
+            </select>
 
-                    <select name="dob-month" id="dob-month">
-                        <option value="">Month</option>
-                         {% for month in ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] %}
-                            <option value="{{ loop.index }}">{{ month }}</option>
-                        {% endfor %}
-                    </select>
+            <select name="dob-month" id="dob-month">
+              <option value="">Month</option>
+              {% for month in ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+              "Aug", "Sep", "Oct", "Nov", "Dec"] %}
+              <option value="{{ loop.index }}">{{ month }}</option>
+              {% endfor %}
+            </select>
 
-                    <select name="dob-year" id="dob-year">
-                        <option value="">Year</option>
-                        {% for year in range(1900, 2024) %}
-                            <option value="{{ year }}">{{ year }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <span class="error" id="dob-error">Invalid Date, please select a valid date.</span>
-            </div>
+            <select name="dob-year" id="dob-year">
+              <option value="">Year</option>
+              {% for year in range(1900, 2024) %}
+              <option value="{{ year }}">{{ year }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="error" id="dob-error">
+            Invalid Date. Please select a valid date.
+          </div>
+          <!-- <span class="error" id="dob-error"></span> !-->
+        </div>
 
-            <div class="form-group">
-                <label for="gender">Please choose a gender.</label>
-                <div class="form-group gender-group">
-                    <label for="female">
-                        Female
-                        <input type="radio" id="female" name="gender" value="female">
-                    </label>
-                    <label for="male">
-                        Male
-                        <input type="radio" id="male" name="gender" value="male">
-                    </label>
-                    <label for="custom">
-                        Custom
-                        <input type="radio" id="custom" name="gender" value="custom">
-                    </label>
-                </div>
-            </div>
-            <p class="agreement">By clicking Sign Up, you agree to our User Agreement, privacy policy, and cookie policy. </p>
-            <div class="form-actions">
-                <button type="submit" class="btn-primary">Sign Up</button>
-                <button type="button" class="btn-secondary">Cancel</button>
-            </div>
-        </form>
-        <div id="response-message"></div>
+        <div class="form-group">
+          <label for="gender">Please choose a gender.</label>
+          <div class="form-group gender-group">
+            <label for="female">
+              Female
+              <input type="radio" id="female" name="gender" value="female" />
+            </label>
+            <label for="male">
+              Male
+              <input type="radio" id="male" name="gender" value="male" />
+            </label>
+            <label for="custom">
+              Custom
+              <input type="radio" id="custom" name="gender" value="custom" />
+            </label>
+          </div>
+        </div>
+        <p class="agreement">
+          By clicking Sign Up, you agree to our User Agreement, privacy policy,
+          and cookie policy.
+        </p>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Sign Up</button>
+          <button type="button" class="btn-secondary">Cancel</button>
+        </div>
+      </form>
+      <div id="response-message"></div>
     </div>
 
     <script>
-        document.getElementById('signup-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+      function validateDate() {
+        const dobDay = document.getElementById("dob-day").value;
+        const dobMonth = document.getElementById("dob-month").value;
+        const dobYear = document.getElementById("dob-year").value;
+        const dobError = document.getElementById("dob-error");
 
-            document.querySelectorAll('.error').forEach(function(element) {
-                element.textContent = '';
-            });
-        })
+        if (!dobDay || !dobMonth || !dobYear) {
+          dobError.style.display = "block";
+          dobError.innerText = "Invalid Date. Please select a valid date.";
+          return false;
+        }
+
+        const date = new Date(dobYear, dobMonth - 1, dobDay);
+        const isValidDate =
+          date &&
+          date.getMonth() + 1 == Number(dobMonth) &&
+          date.getDate() == Number(dobDay) &&
+          date.getFullYear() == Number(dobYear);
+
+        if (!isValidDate) {
+          dobError.style.display = "block";
+          dobError.innerText = "Invalid Date."
+          return false;
+        } else {
+          dobError.style.display = "none";
+          return true;
+        }
+      }
+
+      function validateForm(event) {
+        event.preventDefault();
+        if (validateDate()) {
+          document.getElementById("response-message").innerText =
+            "Form Submitted";
+        } else {
+          document.getElementById("response-message").innerText =
+            "Please fix the errors and try again.";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("signup-form")
+          .addEventListener("submit", validateForm);
+
+              // Adding event listeners for real-time validation
+        document.getElementById("dob-day").addEventListener("change", validateDate);
+        document.getElementById("dob-month").addEventListener("change", validateDate);
+        document.getElementById("dob-year").addEventListener("change", validateDate);
+
+      });
     </script>
-
-</body>
+  </body>
 </html>
