@@ -41,9 +41,11 @@
         <div class="form-group">
           <label for="dob">Date of Birth</label>
           <div class="dob-group">
+            
             <div class="dob-item">
+              <p>Day</p>
                 <select name="dob-day" id="dob-day">
-                    <option value="">Day</option>
+                    <option value=""></option>
                     {% for day in range(1, 32) %}
                     <option value="{{ day }}">{{ day }}</option>
                     {% endfor %}
@@ -51,8 +53,9 @@
             </div>
 
             <div class="dob-item">
+              <p>Month</p>
                 <select name="dob-month" id="dob-month">
-                    <option value="">Month</option>
+                    <option value=""></option>
                     {% for month in ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
                     "Aug", "Sep", "Oct", "Nov", "Dec"] %}
                     <option value="{{ loop.index }}">{{ month }}</option>
@@ -60,8 +63,9 @@
                 </select>               
             </div>
             <div class="dob-item">
+              <p>Year</p>
                 <select name="dob-year" id="dob-year">
-                    <option value="">Year</option>
+                    <option value=""></option>
                     {% for year in range(1900, 2024) %}
                     <option value="{{ year }}">{{ year }}</option>
                     {% endfor %}
@@ -78,7 +82,7 @@
 
 
         <div class="form-group">
-          <label for="gender">Please choose a gender.</label>
+          <label class="gender-label" for="gender">Please choose a gender. You can change who can see this later.</label>
           <div class="form-group gender-group">
             <label for="female">
               Female
