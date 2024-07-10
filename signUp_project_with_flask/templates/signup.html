@@ -13,6 +13,7 @@
   <body>
     <div class="container">
       <h2>Sign Up</h2>
+      <hr class="hr">
       <form id="signup-form">
         <div class="form-group full-width">
           <input type="text" id="first-name" placeholder="First Name" />
@@ -26,7 +27,7 @@
             name="contact"
             placeholder="Enter Mobile or email"
           />
-          <div class="contact-error" id="contact-error">Enter email address or mobile number.</div>
+          <div class="contact-error" id="contact-error">Enter your email address or mobile number.</div>
         </div>
 
         <div class="form-group">
@@ -83,17 +84,17 @@
 
         <div class="form-group">
           <label class="gender-label" for="gender">Please choose a gender. You can change who can see this later.</label>
-          <div class="form-group gender-group">
+          <div class="gender-group">
             <label for="female">
-              Female
+              <p>Female</p>
               <input type="radio" id="female" name="gender" value="female" />
             </label>
             <label for="male">
-              Male
+              <p>Male</p>
               <input type="radio" id="male" name="gender" value="male" />
             </label>
             <label for="custom">
-              Custom
+              <p>Custom</p>
               <input type="radio" id="custom" name="gender" value="custom" />
             </label>
           </div>
@@ -133,7 +134,7 @@
 
         if (!isValidDate) {
           dobError.style.display = "block";
-          dobError.innerText = "Invalid Date."
+          dobError.innerText = "Invalid Date. Please select a valid date."
           return false;
 
         } else {
@@ -148,7 +149,7 @@
 
         if (!contact) {
             contactError.style.display = "block";
-            contactError.innerText = "Enter Mobile number or email address.";
+            contactError.innerText = "Enter your Mobile number or email address.";
             return false;
         }
         else {
