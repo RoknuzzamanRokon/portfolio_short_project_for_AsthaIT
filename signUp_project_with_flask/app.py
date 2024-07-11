@@ -27,8 +27,18 @@ table = dynamodb.Table('asignUp')
 def index():
     return render_template('index.html')
 
-@app.route('/signup')
+@app.route('/submit', methods=['POST'])
 def signup():
+    try:
+        user_data = request.json
+        table.put_item(Item=user_data)
+        return jsonify({'message': 'Data save successfully!'}), 200
+    except NoCredentialsError:
+        return jsonify({'error': 'AWS credentials no provide'}), 500
+    except PartialCredentialsError:
+        return jsonify({'error': 'Incomplete AWS credentials'}), 500
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
     return render_template('signup.html')
 
 
