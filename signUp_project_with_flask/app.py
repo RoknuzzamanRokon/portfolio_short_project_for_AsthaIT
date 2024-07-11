@@ -3,6 +3,7 @@ import boto3
 from botocore.exceptions import NoCredentialsError, PartialCredentialsError
 from dotenv import load_dotenv
 import os
+import uuid
 
 
 app = Flask(__name__)
@@ -36,6 +37,7 @@ def signup():
 def handle_signup():
     try:
         user_data = request.form.to_dict()
+        user_data['user-id'] = str(uuid.uuid4())
         table.put_item(Item=user_data)
         return jsonify({'message': 'Data save successfully!'}), 200
     except NoCredentialsError:
