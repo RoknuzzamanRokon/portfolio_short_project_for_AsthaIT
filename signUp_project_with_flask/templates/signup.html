@@ -11,177 +11,181 @@
   </head>
 
   <body>
-    <div class="container">
-      <h2>Sign Up</h2>
-      <hr class="hr">
-      <form id="signup-form">
-        <div class="form-group full-width">
-          <input type="text" id="first-name" placeholder="First Name" />
-          <input type="text" id="surname" placeholder="Surname" />
-        </div>
-
-        <div class="form-group" id="email">
-          <input
-            type="text"
-            id="contact"
-            name="contact"
-            placeholder="Enter Mobile or email"
-          />
-          <div class="contact-error" id="contact-error">Enter your email address or mobile number.</div>
-        </div>
-
-        <div class="form-group">
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Password must be at least 4 chars long."
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="dob">Date of Birth</label>
-          <div class="dob-group">
-            
-            <div class="dob-item">
-              <p>Day</p>
-                <select name="dob-day" id="dob-day">
-                    <option value=""></option>
-                    {% for day in range(1, 32) %}
-                    <option value="{{ day }}">{{ day }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
-            <div class="dob-item">
-              <p>Month</p>
-                <select name="dob-month" id="dob-month">
-                    <option value=""></option>
-                    {% for month in ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
-                    "Aug", "Sep", "Oct", "Nov", "Dec"] %}
-                    <option value="{{ loop.index }}">{{ month }}</option>
-                    {% endfor %}
-                </select>               
-            </div>
-            <div class="dob-item">
-              <p>Year</p>
-                <select name="dob-year" id="dob-year">
-                    <option value=""></option>
-                    {% for year in range(1900, 2024) %}
-                    <option value="{{ year }}">{{ year }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
-
+    
+      <div class="container">
+        <h2>Sign Up</h2>
+        <hr class="hr">
+        <form action="/submit" method='post' id='signup-form'>
+          <div class="form-group full-width">
+            <input type="text" id="first-name" placeholder="First Name" />
+            <input type="text" id="surname" placeholder="Surname" />
           </div>
-          <div class="error" id="dob-error">
-            Invalid Date. Please select a valid date.
+
+          <div class="form-group" id="email">
+            <input
+              type="text"
+              id="contact"
+              name="contact"
+              placeholder="Enter Mobile or email"
+            />
+            <div class="contact-error" id="contact-error">Enter your email address or mobile number.</div>
           </div>
-        </div>
 
-
-
-        <div class="form-group">
-          <label class="gender-label" for="gender">Please choose a gender. You can change who can see this later.</label>
-          <div class="gender-group">
-            <label for="female">
-              <p>Female</p>
-              <input type="radio" id="female" name="gender" value="female" />
-            </label>
-            <label for="male">
-              <p>Male</p>
-              <input type="radio" id="male" name="gender" value="male" />
-            </label>
-            <label for="custom">
-              <p>Custom</p>
-              <input type="radio" id="custom" name="gender" value="custom" />
-            </label>
+          <div class="form-group">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password must be at least 4 chars long."
+            />
           </div>
-        </div>
-        <p class="agreement">
-          By clicking Sign Up, you agree to our User Agreement, privacy policy,
-          and cookie policy.
-        </p>
-        <div class="form-actions">
-          <button type="submit" class="btn-primary">Sign Up</button>
-          <button type="button" class="btn-secondary">Cancel</button>
-        </div>
-      </form>
-      <div id="response-message"></div>
-    </div>
 
-    <script>
-      function validateDate() {
-        const dobDay = document.getElementById("dob-day").value;
-        const dobMonth = document.getElementById("dob-month").value;
-        const dobYear = document.getElementById("dob-year").value;
-        const dobError = document.getElementById("dob-error");
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <div class="dob-group">
+              
+              <div class="dob-item">
+                <p>Day</p>
+                  <select name="dob-day" id="dob-day">
+                      <option value=""></option>
+                      {% for day in range(1, 32) %}
+                      <option value="{{ day }}">{{ day }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
 
-        if (!dobDay || !dobMonth || !dobYear) {
-          dobError.style.display = "block";
-          dobError.innerText = "Invalid Date. Please select a valid date.";
-          return false;
-        }
+              <div class="dob-item">
+                <p>Month</p>
+                  <select name="dob-month" id="dob-month">
+                      <option value=""></option>
+                      {% for month in ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+                      "Aug", "Sep", "Oct", "Nov", "Dec"] %}
+                      <option value="{{ loop.index }}">{{ month }}</option>
+                      {% endfor %}
+                  </select>               
+              </div>
+              <div class="dob-item">
+                <p>Year</p>
+                  <select name="dob-year" id="dob-year">
+                      <option value=""></option>
+                      {% for year in range(1900, 2024) %}
+                      <option value="{{ year }}">{{ year }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
 
 
-        const date = new Date(dobYear, dobMonth - 1, dobDay);
-        const isValidDate =
-          date &&
-          date.getMonth() + 1 == Number(dobMonth) &&
-          date.getDate() == Number(dobDay) &&
-          date.getFullYear() == Number(dobYear);
+            </div>
+            <div class="error" id="dob-error">
+              Invalid Date. Please select a valid date.
+            </div>
+          </div>
 
-        if (!isValidDate) {
-          dobError.style.display = "block";
-          dobError.innerText = "Invalid Date. Please select a valid date."
-          return false;
 
-        } else {
-          dobError.style.display = "none";
-          return true;
-        }
-      }
 
-      function validateContact(){
-        const contact = document.getElementById("contact").value;
-        const contactError = document.getElementById("contact-error");
+          <div class="form-group">
+            <label class="gender-label" for="gender">Please choose a gender. You can change who can see this later.</label>
+            <div class="gender-group">
+              <label for="female">
+                <p>Female</p>
+                <input type="radio" id="female" name="gender" value="female" />
+              </label>
+              <label for="male">
+                <p>Male</p>
+                <input type="radio" id="male" name="gender" value="male" />
+              </label>
+              <label for="custom">
+                <p>Custom</p>
+                <input type="radio" id="custom" name="gender" value="custom" />
+              </label>
+            </div>
+          </div>
+          <p class="agreement">
+            By clicking Sign Up, you agree to our User Agreement, privacy policy,
+            and cookie policy.
+          </p>
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Sign Up</button>
+            <button type="button" class="btn-secondary">Cancel</button>
+          </div>
+        </form>
+        <div id="response-message"></div>
+      </div>
 
-        if (!contact) {
-            contactError.style.display = "block";
-            contactError.innerText = "Enter your Mobile number or email address.";
+
+
+      <script>
+        function validateDate() {
+          const dobDay = document.getElementById("dob-day").value;
+          const dobMonth = document.getElementById("dob-month").value;
+          const dobYear = document.getElementById("dob-year").value;
+          const dobError = document.getElementById("dob-error");
+
+          if (!dobDay || !dobMonth || !dobYear) {
+            dobError.style.display = "block";
+            dobError.innerText = "Invalid Date. Please select a valid date.";
             return false;
-        }
-        else {
-            contactError.style.display = "none";
+          }
+
+
+          const date = new Date(dobYear, dobMonth - 1, dobDay);
+          const isValidDate =
+            date &&
+            date.getMonth() + 1 == Number(dobMonth) &&
+            date.getDate() == Number(dobDay) &&
+            date.getFullYear() == Number(dobYear);
+
+          if (!isValidDate) {
+            dobError.style.display = "block";
+            dobError.innerText = "Invalid Date. Please select a valid date."
+            return false;
+
+          } else {
+            dobError.style.display = "none";
             return true;
+          }
         }
-      }
-      
-      function validateForm(event) {
-        event.preventDefault();
-        const isValidDate = validateDate();
-        const isContactValid = validateContact();
-        if (isContactValid && isValidDate) {
-          document.getElementById("response-message").innerText =
-            "Form Submitted";
-        } else {
-          document.getElementById("response-message").innerText =
-            "Please fix the errors and try again.";
+
+        function validateContact(){
+          const contact = document.getElementById("contact").value;
+          const contactError = document.getElementById("contact-error");
+
+          if (!contact) {
+              contactError.style.display = "block";
+              contactError.innerText = "Enter your Mobile number or email address.";
+              return false;
+          }
+          else {
+              contactError.style.display = "none";
+              return true;
+          }
         }
-      }
+        
+        function validateForm(event) {
+          
+          const isValidDate = validateDate();
+          const isContactValid = validateContact();
+          if (isContactValid && isValidDate) {
+            document.getElementById("signup-form").submit();
+          } else {
+            event.preventDefault();
+            document.getElementById("response-message").innerText =
+              "Please fix the errors and try again.";
+          }
+        }
 
-      document.addEventListener("DOMContentLoaded", function () {
-        document
-          .getElementById("signup-form")
-          .addEventListener("submit", validateForm);
+        document.addEventListener("DOMContentLoaded", function () {
+          document
+            .getElementById("signup-form")
+            .addEventListener("submit", validateForm);
 
-              // Adding event listeners for real-time validation
-        document.getElementById("dob-day").addEventListener("change", validateDate);
-        document.getElementById("dob-month").addEventListener("change", validateDate);
-        document.getElementById("dob-year").addEventListener("change", validateDate);
+                // Adding event listeners for real-time validation
+          document.getElementById("dob-day").addEventListener("change", validateDate);
+          document.getElementById("dob-month").addEventListener("change", validateDate);
+          document.getElementById("dob-year").addEventListener("change", validateDate);
 
-      });
-    </script>
+        });
+      </script>
+    
   </body>
 </html>
