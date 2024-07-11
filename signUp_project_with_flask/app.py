@@ -1,6 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
+import boto3
+from botocore.exceptions import NoCredentialsError, PartialCredentialsError
 
 app = Flask(__name__)
+
 
 
 @app.route('/')

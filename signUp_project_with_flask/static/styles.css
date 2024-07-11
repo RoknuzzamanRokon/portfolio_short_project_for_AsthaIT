@@ -20,10 +20,12 @@ body {
 .form-group.full-width {
     display: flex;
     justify-content: space-between;
+    height: 45px;
 }
 
 .form-group.full-width input[type="text"] {
     width: 48%;
+    border: 2px solid #745252;
 }
 
 .form-group {
@@ -39,6 +41,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
+    border: 2px solid #745252;
 }
 
 .form-group input[type="text"]#contact,
@@ -60,7 +63,7 @@ body {
 }
 
 .dob-item {
-    border: 1px solid #9e9d9d;
+    border: 2px solid #9E9E92;
     flex: 1;
     display: flex;
     align-items: center;
