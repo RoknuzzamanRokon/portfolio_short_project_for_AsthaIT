@@ -1,6 +1,15 @@
 from flask import Flask, render_template, request, jsonify
 import boto3
 from botocore.exceptions import NoCredentialsError, PartialCredentialsError
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+aws_access_key = os.environ.get("AWS_ACCESS_KEY")
+aws_secret_key = os.environ.get("AWS_SECRET_KEY")
+aws_region = os.environ.get("REGION_NAME")
+
 
 app = Flask(__name__)
 
