@@ -120,6 +120,17 @@ body {
     margin-left: 150px;
 }
 
+.password-error {
+    display: none;
+    color: rgb(245, 70, 70);
+    font-size: 0.875em;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    width: calc(50% - 30px);
+    margin-left: 150px;
+}
+
 .hr {
     border: none;
     height: 2px;

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, redirect, url_for, request, jsonify
 import boto3
 from botocore.exceptions import NoCredentialsError, PartialCredentialsError
 from dotenv import load_dotenv
@@ -32,6 +32,10 @@ def index():
 def signup():
     return render_template('signup.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 
 @app.route('/submit', methods=['POST'])
 def handle_signup():
@@ -39,7 +43,8 @@ def handle_signup():
         user_data = request.form.to_dict()
         user_data['user-id'] = str(uuid.uuid4())
         table.put_item(Item=user_data)
-        return jsonify({'message': 'Data save successfully!'}), 200
+        return redirect(url_for('login'))
+        
     except NoCredentialsError:
         return jsonify({'error': 'AWS credentials no provide'}), 500
     except PartialCredentialsError:

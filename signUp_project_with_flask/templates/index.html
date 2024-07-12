@@ -3,27 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='login_page_styles.css')}}">
-    <script>
-        function goToSignUp() {
-            window.location.href = "{{ url_for('signup')}}"
-        }
-    </script>
+    <title>Home</title>
 </head>
 <body>
-    <form>
-        <h2>Log in</h2>
-        <hr>
-        <input type="text" placeholder="Username or Email">
-        <input type="password" placeholder="password">
-        <button type="submit">Continue</button>
-        <div class="divider">or</div>
-        <button class="social-button">
-            <img src="{{ url_for('static', filename='google_logo.png') }}" alt="Google Logo"> Continue with Google
-        </button>
-        <p>Don't have an account?</p>
-        <button type="button" onclick="goToSignUp()">Sign Up</button>
-    </form>
+    <h1>Welcome to home page.</h1>
 </body>
 </html>
