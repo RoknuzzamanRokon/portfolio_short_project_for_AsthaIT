@@ -109,7 +109,7 @@
           
           <div class="form-actions">
             <button type="submit" class="btn-primary">Sign Up</button>
-            <button type="button" class="btn-secondary">Cancel</button>
+            <button type="button" class="btn-secondary" onclick="goToHome()">Cancel</button>
           </div>
         </form>
 
@@ -119,6 +119,10 @@
 
 
       <script>
+
+        function goToHome() {
+          window.location.href = "{{ url_for('index') }}"
+        }
 
         function validateDate() {
           const dobDay = document.getElementById("dob-day").value;
