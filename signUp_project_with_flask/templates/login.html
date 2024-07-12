@@ -10,6 +10,9 @@
             window.location.href = "{{ url_for('signup')}}"
         }
 
+        function underMaintainsMessage() {
+            alert("This function is under maintenance. Try again later.")
+        }
     </script>
 </head>
 <body>
@@ -20,8 +23,8 @@
         <input type="password" placeholder="password">
         <button type="submit">Continue</button>
         <div class="divider">or</div>
-        <button class="social-button">
-            <img src="{{ url_for('static', filename='google_logo.png') }}" alt="Google Logo"> Continue with Google
+        <button class="social-button" onclick="underMaintainsMessage()">
+            <img src="{{ url_for('static', filename='google_logo.png') }}" alt="Google Logo" > Continue with Google
         </button>
         <p>Don't have an account?</p>
         <button type="button" onclick="goToSignUp()">Sign Up</button>
