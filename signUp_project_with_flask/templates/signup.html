@@ -69,7 +69,7 @@
                 <p>Year</p>
                   <select name="dob-year" id="dob-year">
                       <option value=""></option>
-                      {% for year in range(1900, 2024) %}
+                      {% for year in range(1900, 2024) |reverse %}
                       <option value="{{ year }}">{{ year }}</option>
                       {% endfor %}
                   </select>
