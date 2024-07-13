@@ -1,9 +1,11 @@
-from flask import Flask, render_template, redirect, url_for, request, jsonify
+from flask import Flask, render_template, redirect, url_for, request, jsonify, session
 import boto3
 from botocore.exceptions import NoCredentialsError, PartialCredentialsError
+from boto3.dynamodb.conditions import Attr
 from dotenv import load_dotenv
 import os
 import uuid
+
 
 
 app = Flask(__name__)
@@ -22,7 +24,7 @@ dynamodb = boto3.resource(
 )
 
 table = dynamodb.Table('asignUp')
-
+app.secret_key = os.environ.get('SECRET_KEY', os.urandom(24))
 
 @app.route('/')
 def index():
@@ -35,6 +37,42 @@ def signup():
 @app.route('/login')
 def login():
     return render_template('login.html')
+
+@app.route('/about')
+def about():
+    return "Welcome to the about page!"
+
+@app.route('/login-submit', methods=['POST'])
+def handle_login():
+    contact = request.form.get("contact")
+    password = request.form.get("password")
+
+    if not contact or not password:
+        return render_template('login.html', error='Both fields are required')
+
+
+    try:
+        response = table.scan(
+            FilterExpression=Attr('contact').eq(contact)
+        )
+        items = response.get('Items', [])
+        if items and items[0]['password'] == password:
+            session['user'] = items[0]
+            print("Login successful")
+            return redirect(url_for('about'))
+        else:
+            print("Invalid credentials")
+            return render_template('login.html', error='Invalid credentials')
+    except NoCredentialsError:
+        return jsonify({'error': 'AWS credentials not provided'}), 500
+    except PartialCredentialsError:
+        return jsonify({'error': 'Incomplete AWS credentials'}), 500
+    except Exception as e:
+        print("Exception:", str(e))
+        return jsonify({'error': str(e)}), 500
+
+
+
 
 
 @app.route('/submit', methods=['POST'])

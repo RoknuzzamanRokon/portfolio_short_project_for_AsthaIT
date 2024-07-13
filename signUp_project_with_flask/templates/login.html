@@ -16,11 +16,11 @@
     </script>
 </head>
 <body>
-    <form>
+    <form action="{{ url_for('handle_login') }}" method="post">
         <h2>Log in</h2>
         <hr>
-        <input type="text" placeholder="Username or Email">
-        <input type="password" placeholder="password">
+        <input type="text" name="contact" placeholder="Username or Email" requeird>
+        <input type="password" name="password" placeholder="password" requeird>
         <button type="submit">Continue</button>
         <div class="divider">or</div>
         <button class="social-button" onclick="underMaintainsMessage()">
