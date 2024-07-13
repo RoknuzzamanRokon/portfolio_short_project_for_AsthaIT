@@ -3,9 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>about</title>
+    <title>About</title>
+    <style>
+        .typewriter {
+            overflow: hidden;
+            white-space: pre;
+            margin-top: 40px;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+        }
+        .container {
+            display: flex;
+            width: calc(100% - 30px);
+            height: 350px;
+            background-color: #9CB847;
+            border-radius: 6px;
+            box-shadow: 12px 8px 11px rgba(-1, 20, 43, 0.8);
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .content {
+            flex: 1;
+            margin-right:20px;
+        }
+
+        .content h1 {
+            margin-left: 350px;
+            font-size: 50px;
+            color: #fff;
+        }
+
+        .photo {
+            flex-shrink: 0;
+        }
+        .photo img {
+      
+            height: 350px;
+            width: 400px;
+            margin-top: -20px;
+            margin-right: 250px;
+        }
+        .highlight {
+            color: #34E41B;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        .highlight-section {
+            font-weight: bold;
+            font-size: 20px;
+            color: #CB1BE4; 
+        }
+        .highlight-word {
+            font-size: 70px;
+            color: #6347B8;
+            text-shadow: 12px 10px 7px rgba(0, 20, 43, 0.8);
+            
+
+
+        }
+
+    </style>
 </head>
 <body>
-    <h1>This is about page.</h1>
+    <div class="container">
+        <div class="content"><h1>About <span class="highlight-word">M</span>e</h1></div>
+        <div class="photo">
+            <img src="static/images/20240331_144118-removebg-preview.png" alt="20240427_182740-removebg-preview">
+        </div>
+    </div>
+        <div id="typewriter" class="typewriter"></div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            animateText('typewriter', `I am Md. Rokunuzzaman Rokon, 
+            A highly motivated Python Developer with over two years of professional experience and five years of self employ in software development, backend services, 
+            and AI integration. I have honed my skills in designing, developing, and implementing Python software applications during my tenure at <span class="highlight-section">Artixcore Inc</span> ., where 
+            I contributed to projects involving AWS services such as Lambda, DynamoDB, API Gateway, and EC2. Additionally, I collaborated with AI specialists to integrate 
+            machine learning models into various software projects.
+
+            At <span class="highlight-section">GorillaMove</span>, I worked as a Frontend Developer, developing and maintaining front-end components using React.js. I collaborated closely with UX/UI designers 
+            to create user-friendly interfaces and optimized web applications for maximum speed and scalability.
+
+            I hold a B.Sc. in CSE from the European University of Bangladesh. Throughout my career, I have successfully completed various projects, including:
+
+        <span class="highlight-section">Trading Bot:</span> An online auto-trading bot integrated with Coinbase and Binance platforms, handling all backend services and creating APIs for auto-trading functionality.
+        <span class="highlight-section">Telegram Bot: </span> A bot for auto trading on Telegram, leveraging VPS (CONTABO) for backend services.
+        <span class="highlight-section">StoryTeller Bot:</span>  An online auto-generating storyteller bot using Django and MySQL for the backend and React for the frontend.
+        <span class="highlight-section">Roko Shop: </span> An online e-commerce site with diverse products, utilizing Django for the backend and React for the frontend.
+
+            In addition to these projects, I have developed Python API functionalities like Mailmerge, Spotify Scraping, Rain Alert, and Web Scripting. I have also created
+            various games and tools, including a Coffee Machine simulator, Rock Paper Scissors game, Nutrition Tracker, Flash Card, Kanye Quotes generator, and Password 
+            Manager.
+
+            I am passionate about leveraging my expertise to drive impactful solutions that enhance user experiences and operational efficiency. I am committed to continuous 
+            improvement and eager to expand my knowledge of emerging technologies within a dynamic and innovative team.`);
+        });
+
+        function animateText(id, text) {
+            const element = document.getElementById(id);
+            const highlightText = "I am Md. Rokunuzzaman Rokon,";
+            const splitText = text.split(highlightText);
+            const beforeHighlight = splitText[0];
+            const afterHighlight = splitText[1];
+            const highlightedHtml = `<span class="highlight">${highlightText}</span>`;
+            
+            let index = 0;
+            let intervalId;
+
+            function startAnimation() {
+                intervalId = setInterval(type, 10); 
+            }
+
+            function type() {
+                if (index <= beforeHighlight.length + highlightText.length) {
+                    if (index <= beforeHighlight.length) {
+                        element.innerHTML = beforeHighlight.substring(0, index);
+                    } else {
+                        element.innerHTML = beforeHighlight + highlightedHtml.substring(0, index - beforeHighlight.length);
+                    }
+                    index++;
+                } else if (index - beforeHighlight.length - highlightText.length <= afterHighlight.length) {
+                    element.innerHTML = beforeHighlight + highlightedHtml + afterHighlight.substring(0, index - beforeHighlight.length - highlightText.length);
+                    index++;
+                } else {
+                    clearInterval(intervalId); 
+                }
+            }
+
+            startAnimation(); 
+        }
+    </script>
 </body>
 </html>

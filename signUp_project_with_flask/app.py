@@ -40,7 +40,7 @@ def login():
 
 @app.route('/about')
 def about():
-    return "Welcome to the about page!"
+    return render_template('about.html')
 
 @app.route('/login-submit', methods=['POST'])
 def handle_login():
