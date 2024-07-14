@@ -4,7 +4,6 @@ body {
     margin: 50px;
 }
 
-
 hr {
     margin-left: -18px;
     margin-right: -18px;
@@ -19,15 +18,7 @@ form {
     box-shadow: 12px 8px 11px rgba(0, 0, 0, 0.8);
 }
 
-
-input[type="text"] {
-    width: 90%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin: 3px;
-}
-
+input[type="text"],
 input[type="password"] {
     width: 90%;
     padding: 10px;
@@ -72,4 +63,31 @@ button:hover {
     width: 20px;
     height: 20px;
     margin-right: 10px;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 600px) {
+    body {
+        margin: 10px;
+    }
+
+    form {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+    }
+
+    button,
+    .social-button {
+        width: 100%;
+    }
+
+    hr {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
 }

@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-    width: 600px;
+    width: 700px;
     background-color: #ccc;
     padding: 20px;
     border-radius: 8px;
@@ -69,7 +69,6 @@ body {
     justify-content: flex-end;
     border-radius: 5px;
     background-color: #ffffff;
-
 }
 
 .dob-item p {
@@ -138,16 +137,13 @@ body {
     margin-left: -18px;
     margin-right: -18px;
     margin-bottom: 19px;
-
 }
+
 .gender-group {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     margin-top: 10px;
-
- 
 }
 
 .gender-label {
@@ -175,6 +171,7 @@ body {
 .gender-group p {
     margin-left: 10px;
 }
+
 .gender-group label:hover {
     background-color: #e7e7e7;
 }
@@ -230,4 +227,104 @@ body {
     text-align: center;
     margin-top: 20px;
     font-size: 1rem;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .form-group.full-width {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .form-group.full-width input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+        width: calc(100% - 10px);
+    }
+
+    .dob-group {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contact-error,
+    .password-error {
+        width: calc(100% - 30px);
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .gender-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .gender-group label {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .gender-group input[type="radio"] {
+        margin-left: 0;
+    }
+
+    .dob-group {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .dob-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5px;
+    }
+
+    .dob-item p {
+        margin-left: 0;
+        margin-bottom: 5px;
+    }
+
+    .dob-item select {
+        width: 100%;
+    }
+
+    .form-group.full-width input[type="text"] {
+        width: 100%;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+        width: calc(100% - 10px);
+    }
+
+    .form-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contact-error,
+    .password-error {
+        width: calc(100% - 30px);
+        margin-left: auto;
+    }
 }
