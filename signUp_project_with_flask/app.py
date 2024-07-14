@@ -80,11 +80,10 @@ def handle_signup():
     try:
         user_data = request.form.to_dict()
 
-        contact = user_data.get("contact")
         password = user_data.get("password")
 
-        if not contact or not password:
-            return render_template('signup.html', error='Contact and password are required')
+        if not password:
+            return render_template('signup.html', error='Password are required')
         
         if len(password) < 4:
             return render_template('signup.html', error='Password must be at least 4 characters long.')
