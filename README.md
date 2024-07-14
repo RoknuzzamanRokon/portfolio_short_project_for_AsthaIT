@@ -57,11 +57,13 @@ I'm making this up.
 # Login Page
    ![login-Page](https://github.com/user-attachments/assets/f9ee9118-d3c9-40c6-95f2-0695e7e4d2c7)
 
-# SignUp Page
-  ![2024-07-14 13-52-57 (online-video-cutter com)](https://github.com/user-attachments/assets/b9d00639-0183-46d9-9bce-1df30403b72d)
 
 # Project Short Gift.
   ![2024-07-14 13-52-57 (online-video-cutter com)](https://github.com/user-attachments/assets/44557c56-515e-4549-b24c-43df60bbc6f4)
+
+
+
+https://github.com/user-attachments/assets/35b0d063-e0ea-47bc-be62-14b73934d17d
 
 
   
