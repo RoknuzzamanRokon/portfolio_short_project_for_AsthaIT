@@ -37,14 +37,14 @@ I'm making this up.
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/yourusername/your-repo-name.git
-    cd your-repo-name
+    git clone https://github.com/RoknuzzamanRokon/portfolio_short_project_for_AsthaIT.git
+    cd portfolio_short_project_for_AsthaIT
     ```
 
-2. **Open the HTML file for your task**:
+2. **Open the HTML file for your task:**
     Open `signup.html` in your preferred web browser. For your task.
 
-3. **Open Flask for the full project."
+3. **Open Flask for the full project.:**
    Open `app.py` for flask full project.
    setup credentials for Dynamodb into (.env) file.
    Create a table name ('asignUp') for the user information store. [Note: 'asignUp' is my table name.]
