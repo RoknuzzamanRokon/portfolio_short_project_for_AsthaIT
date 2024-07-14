@@ -6,14 +6,16 @@
  5. Use only vanilla CSS.
 
    
-This is your provided image.
+## This is your provided image.
 
 ![signUp](https://github.com/user-attachments/assets/55c1fa35-1261-4c7b-87c7-283d262c148a)
 
 
-I'm making this up.
+## I'm making this up.
 
-![project_photo_01](https://github.com/user-attachments/assets/1f5dd164-2654-4e19-96c3-6d0af376e967)
+![project_photo_02](https://github.com/user-attachments/assets/dcf24b11-2c53-419b-aca4-4f83c3898c88)
+
+
 
 
 ## Extra Features
