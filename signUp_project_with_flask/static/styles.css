@@ -108,6 +108,12 @@ body {
     background-color: #ffffff;
 }
 
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 .contact-error {
     display: none;
     color: rgb(245, 70, 70);
@@ -177,7 +183,7 @@ body {
 }
 
 .gender-group input[type="radio"] {
-    margin-left: 114px;
+    margin-left: 145px;
     margin-right: 10px;
 }
 
